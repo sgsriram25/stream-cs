@@ -328,18 +328,18 @@ elif side == 'Segmentation based on UK':
 elif side == 'Product Clustering':
     col1, col2 = st.columns(2)
     with col1:
-        cat1 = Image.open('stream-cs/dashimage/dash1.png')
+        cat1 = Image.open('dashimage/dash1.png')
         st.image(cat1, caption='Category 1 Products')
     with col2:
-        cat2 = Image.open('stream-cs/dashimage/dash2.png')
+        cat2 = Image.open('dashimage/dash2.png')
         st.image(cat2, caption='Category 2 Products')
     
     col3, col4 = st.columns(2)
     with col3:
-        cat3 = Image.open('stream-cs/dashimage/dash3.png')
+        cat3 = Image.open('dashimage/dash3.png')
         st.image(cat3, caption='Category 3 Products')
     with col4:
-        cat4 = Image.open('stream-cs/dashimage/dash4.png')
+        cat4 = Image.open('dashimage/dash4.png')
         st.image(cat4, caption='Category 4 Products')
         
     st.text("")
@@ -347,7 +347,7 @@ elif side == 'Product Clustering':
     col5, col6 = st.columns(2)
     
     with col5:
-        gra1 = Image.open('stream-cs/dashimage/graph.jpeg')
+        gra1 = Image.open('dashimage/graph.jpeg')
         st.image(gra1, caption='Graph for Amount spent on each category')
     
     with col6:

@@ -9,7 +9,7 @@ import seaborn as sns
 
 
 st.set_page_config(layout = "wide")
-st.title("Customer Segmentation Spark Shop Dashboard")
+st.title("Insights Spark Shop Dashboard")
 
 side = st.sidebar.selectbox('Select page',
   ['Monthly Customer Status','New vs Existing Customers','Segmentation based on UK','Product Clustering','RFM Clustering'])

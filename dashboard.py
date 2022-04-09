@@ -7,6 +7,7 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
 st.set_page_config(layout = "wide")
 st.title("Customer Segmentation Spark Shop Dashboard")
 
@@ -330,17 +331,21 @@ elif side == 'Product Clustering':
     with col1:
         cat1 = Image.open('dashimage/dash1.png')
         st.image(cat1, caption='Category 1 Products')
+        st.markdown('This category has general products like mug, flowers, jewellery etc')
     with col2:
         cat2 = Image.open('dashimage/dash2.png')
         st.image(cat2, caption='Category 2 Products')
+        st.markdown('This category has bag products like shopper bag,gift bag, jumbo bag etc')
     
     col3, col4 = st.columns(2)
     with col3:
         cat3 = Image.open('dashimage/dash3.png')
         st.image(cat3, caption='Category 3 Products')
+        st.markdown('This category has chirstmas decorative products like star, christmas tree, hangings etc')
     with col4:
         cat4 = Image.open('dashimage/dash4.png')
         st.image(cat4, caption='Category 4 Products')
+        st.markdown('This category has general decorative products like crystal, mirror, antique etc')
         
     st.text("")
     
@@ -349,6 +354,7 @@ elif side == 'Product Clustering':
     with col5:
         gra1 = Image.open('dashimage/graph.jpeg')
         st.image(gra1, caption='Graph for Amount spent on each category')
+        st.markdown('All category 1 ,2, 3 has sharp increase in sales in the months November and december indicating the **chirstmas season**')
     
     with col6:
         heat = pd.read_csv('heat.csv')
@@ -409,4 +415,93 @@ elif side == 'RFM Clustering':
         plt.ylabel('RFM Country Cluster', fontsize = 15)
         st.write(fig)
         #plt.show()
-     
+    
+    
+    col1, col2 = st.columns(2)
+   
+    with col1:
+        st.header('Cluster 1 (0)')
+        st.markdown('Cluster 1 has low recency and frequency but high monetary value - classified as one time high amount buyers')
+        st.header('Cluster 2 (1)')
+        st.markdown('Cluster 2 has medium recency and frequency and has the highest monetary value among all')
+        st.header('Cluster 3 (3)')
+        st.markdown('Cluster 3 has decent recency, frequency and monetary value - They are medium regular buyers')
+        st.header('Cluster 4 (5)')
+        st.markdown('Cluster 4 has highest frequency and recency value but medium monetary value - Classfied as best regular Medium Money spenders')
+        
+   
+    with col2:
+        page = st.selectbox('Select page',['RFM cluster 1','RFM cluster 2','RFM cluster 3','RFM cluster 4'])
+        if page == 'RFM cluster 1':
+            plot_data12 = [
+                go.Bar(
+                    x=['General Category','Bags Category','Christmas decoration category','Other Decoration Category'],
+                    y=[2588,234,95,628],
+            )
+           ]
+        
+            plot_layout = go.Layout(
+                       xaxis={"type": "category"},
+                       title='Cluster 1 Each Category Buyers'
+                   )
+            
+            fig12 = go.Figure(data=plot_data12, layout=plot_layout) 
+            st.plotly_chart(fig12, use_container_width=True)
+            st.markdown('The RFM first cluster has high value General category customers')
+            st.markdown('The RFM first cluster has high value chirstmas category customers')
+            st.markdown('The RFM first cluster has high value General Decoration category customers')
+        
+        if page == 'RFM cluster 2':
+            plot_data12 = [
+                go.Bar(
+                    x=['General Category','Bags Category','Christmas decoration category','Other Decoration Category'],
+                    y=[1126,95,35,291],
+            )
+           ]
+        
+            plot_layout = go.Layout(
+                       xaxis={"type": "category"},
+                       title='Cluster 2 Each Category Buyers'
+                   )
+            
+            fig12 = go.Figure(data=plot_data12, layout=plot_layout) 
+            st.plotly_chart(fig12, use_container_width=True)
+            st.markdown('The RFM Second cluster has high value General decoration category customers')
+            st.markdown('The RFM Second cluster has low value General bag and christmas decoration category customers')
+            st.markdown('The RFM second cluster has regular but medium spenders')
+            
+        
+        if page == 'RFM cluster 3':
+            plot_data12 = [
+                go.Bar(
+                    x=['General Category','Bags Category','Christmas decoration category','Other Decoration Category'],
+                    y=[467,12,17,81],
+            )
+           ]
+        
+            plot_layout = go.Layout(
+                       xaxis={"type": "category"},
+                       title='Cluster 3 Each Category Buyers'
+                   )
+            
+            fig12 = go.Figure(data=plot_data12, layout=plot_layout) 
+            st.plotly_chart(fig12, use_container_width=True)
+            st.markdown('The RFM third cluster has low value but does have some contribution so can gain their attraction by giving offers')
+        
+        if page == 'RFM cluster 4':
+            plot_data12 = [
+                go.Bar(
+                    x=['General Category','Bags Category','Christmas decoration category','Other Decoration Category'],
+                    y=[1126,95,35,291],
+            )
+           ]
+        
+            plot_layout = go.Layout(
+                       xaxis={"type": "category"},
+                       title='Cluster 4 Each Category Buyers'
+                   )
+            
+            fig12 = go.Figure(data=plot_data12, layout=plot_layout) 
+            st.plotly_chart(fig12, use_container_width=True)
+            st.markdown('The RFM fourth cluster has very little value so can ignore them')
+       
